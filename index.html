@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Stamp Pro | كافيه</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #8B4513;
+            --secondary-color: #D2691E;
+            --accent-color: #F5DEB3;
+            --dark-color: #3E2723;
+            --light-color: #FAF3E0;
+            --text-color: #333;
+            --text-light: #777;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-color);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Amiri', serif;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            position: relative;
+            margin-bottom: 50px;
+        }
+
+        h2:after {
+            content: "";
+            position: absolute;
+            width: 100px;
+            height: 4px;
+            background: var(--secondary-color);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-light);
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(250, 243, 224, 0.95);
+            box-shadow: var(--shadow);
+            padding: 15px 0;
+            transition: var(--transition);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Amiri', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-right: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a:after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            bottom: -5px;
+            left: 0;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content h1 {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Menu Section */
+        .menu {
+            background-color: #f9f5f0;
+        }
+
+        .menu-categories {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .category-btn {
+            padding: 10px 25px;
+            background: white;
+            border: 2px solid var(--primary-color);
+            border-radius: 30px;
+            color: var(--primary-color);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .category-btn.active, .category-btn:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .menu-item {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .menu-item-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .menu-item-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .menu-item:hover .menu-item-img img {
+            transform: scale(1.1);
+        }
+
+        .menu-item-content {
+            padding: 20px;
+        }
+
+        .menu-item-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .menu-item-name {
+            font-size: 1.3rem;
+            color: var(--dark-color);
+        }
+
+        .menu-item-price {
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: flex;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .contact-details {
+            margin-top: 30px;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .contact-detail i {
+            background: var(--primary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 15px;
+            font-size: 1.2rem;
+        }
+
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* WhatsApp Fixed Button */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .whatsapp-btn:hover {
+            background: #128C7E;
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 50px 0 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section h3:after {
+            content: "";
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            background: var(--secondary-color);
+            bottom: 0;
+            right: 0;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color);
+            padding-right: 10px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--primary-color);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            h2 {
+                font-size: 2.2rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                flex-direction: column;
+                background: white;
+                width: 70%;
+                height: 100vh;
+                padding: 80px 30px 30px;
+                box-shadow: var(--shadow);
+                transition: var(--transition);
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 0 0 25px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .contact-content {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .menu-items {
+                grid-template-columns: 1fr;
+            }
+            
+            .whatsapp-btn {
+                bottom: 20px;
+                left: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 1.7rem;
+            }
+            
+            .nav-links {
+                width: 85%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/201092888626" class="whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#home" class="logo">Web Stamp Pro</a>
+                <ul class="nav-links">
+                    <li><a href="#home">الرئيسية</a></li>
+                    <li><a href="#about">من نحن</a></li>
+                    <li><a href="#menu">المنيو</a></li>
+                    <li><a href="#contact">اتصل بنا</a></li>
+                </ul>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Web Stamp Pro</h1>
+                <p>أفضل وجهة لمحبي القهوة والعمل الرقمي. نقدم أجود أنواع القهوة والمشروبات في أجواء ملهمة مع خدمة إنترنت فائقة السرعة. المكان المثالي للعمل والاسترخاء واللقاءات.</p>
+                <a href="#menu" class="btn">استعرض المنيو</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2>من نحن</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>فلسفتنا في Web Stamp Pro</h3>
+                    <p>في Web Stamp Pro، نؤمن بأن القهوة الجيدة هي وقود الإبداع والإنتاجية. نسعى لتوفير بيئة مثالية تجمع بين أجواء الكافيه الهادئة وتقنيات العمل الحديثة.</p>
+                    <p>نقدم تشكيلة مميزة من القهوة المصنوعة يدويًا من أجود حبوب البن، مع وجبات خفيفة وحلويات منزلية الصنع تلبي جميع الأذواق.</p>
+                    <p>فريقنا مدرب على أعلى مستوى لضمان تقديم خدمة استثنائية، ومساحتنا مصممة بعناية لتوفر الراحة والخصوصية للعمل أو اللقاءات الاجتماعية.</p>
+                    <a href="#contact" class="btn">زورونا اليوم</a>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Web Stamp Pro من الداخل">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu">
+        <div class="container">
+            <h2>قائمة المنيو الكاملة</h2>
+            <div class="menu-categories">
+                <button class="category-btn active" data-category="all">الكل</button>
+                <button class="category-btn" data-category="hot">قهوة ساخنة</button>
+                <button class="category-btn" data-category="cold">مشروبات باردة</button>
+                <button class="category-btn" data-category="desserts">حلويات</button>
+                <button class="category-btn" data-category="food">أكلات خفيفة</button>
+            </div>
+            <div class="menu-items">
+                <!-- Menu items will be loaded here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2>اتصل بنا</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>زورونا في أي وقت</h3>
+                    <p>نحن ننتظركم يوميًا من الساعة 8 صباحًا حتى 12 منتصف الليل. يمكنكم حجز طاولة مسبقًا عبر الاتصال بنا أو عبر الواتساب.</p>
+                    <div class="contact-details">
+                        <div class="contact-detail">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>العنوان</h4>
+                                <p>123 شارع التكنولوجيا، مدينة نصر، القاهرة، مصر</p>
+                            </div>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>الهاتف والواتساب</h4>
+                                <p>01092888626</p>
+                            </div>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>البريد الإلكتروني</h4>
+                                <p>info@webstamppro.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h4>ساعات العمل</h4>
+                                <p>كل أيام الأسبوع: 8:00 ص - 12:00 ص</p>
+                                <p>الجمعة: 9:00 ص - 1:00 ص</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>أرسل لنا رسالة</h3>
+                    <form id="messageForm">
+                        <div class="form-group">
+                            <label for="name">الاسم الكامل</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">رقم الهاتف</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">البريد الإلكتروني</label>
+                            <input type="email" id="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">الرسالة</label>
+                            <textarea id="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">إرسال الرسالة</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Web Stamp Pro</h3>
+                    <p>وجهتكم المفضلة للقهوة المميزة والعمل الإبداعي. نقدم أجواء راقية وخدمة استثنائية.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>روابط سريعة</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">الرئيسية</a></li>
+                        <li><a href="#about">من نحن</a></li>
+                        <li><a href="#menu">المنيو</a></li>
+                        <li><a href="#contact">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>ساعات العمل</h3>
+                    <ul class="footer-links">
+                        <li>السبت - الخميس: 8 صباحًا - 12 منتصف الليل</li>
+                        <li>الجمعة: 9 صباحًا - 1 صباحًا</li>
+                        <li>العطلات الرسمية: 10 صباحًا - 1 صباحًا</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>جميع الحقوق محفوظة &copy; 2023 Web Stamp Pro | تم التصميم والبرمجة باحترافية</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Menu Data - تم إضافة المنيو الكامل
+        const menuItems = [
+            // المشروبات الساخنة
+            {
+                id: 1,
+                name: "إسبريسو مكثف",
+                description: "قهوة إسبريسو قوية ومركزة من أجود حبوب الأرابيكا الإثيوبية",
+                price: "25 جنيه",
+                category: "hot",
+                image: "https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+            },
+            {
+                id: 2,
+                name: "كابتشينو كلاسيك",
+                description: "مزيج مثالي من الإسبريسو والحليب المبخر مع رغوة ناعمة ورشة شوكولاتة",
+                price: "30 جنيه",
+                category: "hot",
+                image: "https://images.unsplash.com/photo-1572442388796-11668a67e53d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+            },
+            {
+                id: 3,
+                name: "قهوة تركية أصيلة",
+                description: "قهوة تركية مطحونة ناعماً ومعدة على الجمر بنكهة الهيل الخفيفة",
+                price: "20 جنيه",
+                category: "hot",
+                image: "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
+            },
+
+            {
+                id: 5,
+                name: "موكا شوكولاتة",
+                description: "مزيج رائع من القهوة والشوكولاتة الساخنة مع كريمة مخفوقة",
+                price: "40 جنيه",
+                category: "hot",
+                image: "https://images.unsplash.com/photo-1514066558159-fc8c737ef259?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
+            },
+            {
+                id: 6,
+                name: "شاي أعشاب طبيعي",
+                description: "شاي أعشاب طبيعي بالنعناع أو البابونج أو الزنجبيل بالعسل",
+                price: "18 جنيه",
+                category: "hot",
+                image: "https://images.unsplash.com/photo-1561047029-3000c68339ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
+            },
+            
+            // المشروبات الباردة
+            {
+                id: 7,
+                name: "آيس كوفي كلاسيك",
+                description: "قهوة مثلجة مع حليب ومكعبات ثلج، منعشة للصيف",
+                price: "30 جنيه",
+                category: "cold",
+                image: "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80"
+            },
+            {
+                id: 8,
+                name: "فرابيه كراميل",
+                description: "مشروب مثلج بنكهة الكراميل والقهوة مع رشة من الكريمة والكراميل",
+                price: "40 جنيه",
+                category: "cold",
+                image: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
+            },
+
+            {
+                id: 10,
+                name: "عصير طازج موسمي",
+                description: "عصير فواكه طازج يومي (برتقال، فراولة، مانجو، أناناس)",
+                price: "35 جنيه",
+                category: "cold",
+                image: "https://images.unsplash.com/photo-1600271886742-f049cd451bba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
+            },
+
+
+            
+            // الحلويات
+            {
+                id: 13,
+                name: "تشيز كيك بالتوت",
+                description: "تشيز كيك كريمي مع طبقة من صلصة التوت الطازج وقاعدة بسكويت",
+                price: "55 جنيه",
+                category: "desserts",
+                image: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+            },
+            {
+                id: 14,
+                name: "دونات شوكولاتة",
+                description: "دونات طازج مغطى بطبقة سميكة من الشوكولاتة الداكنة أو البيضاء",
+                price: "25 جنيه",
+                category: "desserts",
+                image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80"
+            },
+
+            {
+                id: 17,
+                name: "تيراميسو إيطالي",
+                description: "حلوى التيراميسو الإيطالية الكلاسيكية مع قهوة إسبريسو ومسكربون",
+                price: "65 جنيه",
+                category: "desserts",
+                image: "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
+            },
+            {
+                id: 18,
+                name: "كوكيز شوكولاتة",
+                description: "كوكيز شوكولاتة طري مع قطع شوكولاتة ذائبة، يقدم دافئًا",
+                price: "30 جنيه",
+                category: "desserts",
+                image: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1365&q=80"
+            },
+            
+            // الأكلات الخفيفة
+            {
+                id: 19,
+                name: "ساندويتش جبنة مشوية",
+                description: "ساندويتش جبنة مشوية مع الخضار الطازج في خبز إيطالي مقرمش",
+                price: "50 جنيه",
+                category: "food",
+                image: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1473&q=80"
+            },
+            {
+                id: 20,
+                name: "سلطة كافيه النخبة",
+                description: "سلطة طازجة مع الخضار والجبن والزيتون والصلصة الخاصة",
+                price: "65 جنيه",
+                category: "food",
+                image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80"
+            },
+            {
+                id: 21,
+                name: "توست أفوكادو",
+                description: "خبز توست محمص مع أفوكادو مهروس وبيض مسلوق وبذور الشيا",
+                price: "55 جنيه",
+                category: "food",
+                image: "https://images.unsplash.com/photo-1541519227354-08fa5d50c44d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1625&q=80"
+            },
+            {
+                id: 22,
+                name: "باستا كريمة",
+                description: "باستا مع صلصة كريمية بالفطر أو الدجاج، تقدم ساخنة",
+                price: "75 جنيه",
+                category: "food",
+                image: "https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+            },
+            {
+                id: 23,
+                name: "ساندويتش تونة",
+                description: "ساندويتش تونة طازجة مع المايونيز والخضار في خبز القمح الكامل",
+                price: "45 جنيه",
+                category: "food",
+                image: "https://images.unsplash.com/photo-1481070555726-e2fe8357725c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+            },
+            {
+                id: 24,
+                name: "أومليت الجبن",
+                description: "أومليت طازج مع الجبن والخضار، تقدم مع خبز توست وزبدية سلطة",
+                price: "60 جنيه",
+                category: "food",
+                image: "https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1464&q=80"
+            }
+        ];
+        
+        // Display Menu Items
+        const menuContainer = document.querySelector('.menu-items');
+        const categoryBtns = document.querySelectorAll('.category-btn');
+        
+        function displayMenuItems(category = 'all') {
+            menuContainer.innerHTML = '';
+            
+            const filteredItems = category === 'all' 
+                ? menuItems 
+                : menuItems.filter(item => item.category === category);
+            
+            filteredItems.forEach(item => {
+                const menuItemElement = document.createElement('div');
+                menuItemElement.classList.add('menu-item');
+                menuItemElement.setAttribute('data-category', item.category);
+                
+                menuItemElement.innerHTML = `
+                    <div class="menu-item-img">
+                        <img src="${item.image}" alt="${item.name}">
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">
+                            <h4 class="menu-item-name">${item.name}</h4>
+                            <span class="menu-item-price">${item.price}</span>
+                        </div>
+                        <p>${item.description}</p>
+                    </div>
+                `;
+                
+                menuContainer.appendChild(menuItemElement);
+            });
+            
+            // إذا لم توجد منتجات في الفئة
+            if (filteredItems.length === 0) {
+                menuContainer.innerHTML = `<p style="text-align:center; grid-column:1/-1;">لا توجد منتجات في هذه الفئة حالياً</p>`;
+            }
+        }
+        
+        // Initialize menu with all items
+        displayMenuItems();
+        
+        // Category filter functionality
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                categoryBtns.forEach(b => b.classList.remove('active'));
+                
+                // Add active class to clicked button
+                btn.classList.add('active');
+                
+                // Get category from data attribute
+                const category = btn.getAttribute('data-category');
+                
+                // Display items for selected category
+                displayMenuItems(category);
+            });
+        });
+        
+        // Contact Form Submission
+        const messageForm = document.getElementById('messageForm');
+        
+        messageForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            // Here you would normally send the form data to a server
+            // For this example, we'll just show an alert
+            alert(`شكرًا ${name} على رسالتك! سنتواصل معك على الرقم ${phone} في أقرب وقت.`);
+            
+            // Reset form
+            messageForm.reset();
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.padding = '10px 0';
+                header.style.backgroundColor = 'rgba(250, 243, 224, 0.98)';
+            } else {
+                header.style.padding = '15px 0';
+                header.style.backgroundColor = 'rgba(250, 243, 224, 0.95)';
+            }
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const isClickInsideNav = navLinks.contains(event.target) || mobileMenuBtn.contains(event.target);
+            if (!isClickInsideNav && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+        });
+    </script>
+</body>
+</html>
